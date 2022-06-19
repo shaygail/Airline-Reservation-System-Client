@@ -10,7 +10,7 @@ import {
 	Typography
 } from '@mui/material';
 
-const PricingCard = ({name, model, price, description, routes}) => {
+const PricingCard = ({name, model, price, seats, description, routes}) => {
 	return (
 		<Card elevation={4}>
 			<CardHeader
@@ -34,11 +34,9 @@ const PricingCard = ({name, model, price, description, routes}) => {
 					</Typography>
 				</Box>
 				<Stack align="center" spacing={1}>
-					{description.map((line) => (
-						<Typography component="p" variant="h6" align="center" key={line}>
-							{line}
-						</Typography>
-					))}
+					<Typography component="p" variant="h6" align="center">
+						{seats} Seats
+					</Typography>
 					{routes.map((route, i, array) => {
 						return (
 							<Typography key={i} color="text.primary">
@@ -55,6 +53,11 @@ const PricingCard = ({name, model, price, description, routes}) => {
 					})}
 				</Stack>
 			</CardContent>
+			{description.map((line) => (
+				<Typography component="p" variant="subtitle2" align="center" key={line}>
+					{line}
+				</Typography>
+			))}
 			<CardActions>
 				<Button fullWidth variant="contained">
 					Book

@@ -7,14 +7,16 @@ const flights = [
 		name: 'Luxury Jet Charter',
 		model: 'Syberjet SJ30i',
 		price: 250,
-		description: ['6 Seats'],
+		seats: 6,
+		description: ['Departure: Friday 8AM', 'Return: Sunday 3PM'],
 		routes: ['Rotorua', 'Sydney', 'Dairy Flat']
 	},
 	{
 		name: 'Cirrus Jet Charter',
 		model: 'Cirrus SF50',
 		price: 150,
-		description: ['4 Seats'],
+		seats: 4,
+		description: ['Departure: Weekdays 6AM', 'Return: Same Day 9PM'],
 		routes: ['Dairy Flat', 'Rotorua', 'Dairy Flat']
 	}
 ];
