@@ -1,4 +1,4 @@
-import {Container, Grid, Typography} from '@mui/material';
+import {Container, Grid, Typography, Button} from '@mui/material';
 import {useState} from 'react';
 import PricingCard from './PricingCard';
 
@@ -20,10 +20,16 @@ const flights = [
 ];
 
 const Pricing = () => {
-	const [ascending, setAscending] = useState(true);
+	const [sortAscending, setSortAscending] = useState(true);
 
-	const handleSort = () => {
-		return ascending ? -1 : 1;
+	const toggleAscending = () => {
+		setSortAscending((prev) => !prev);
+	};
+
+	const handleSort = (a, b) => {
+		if (a['price'] < b['price']) return sortAscending ? -1 : 1;
+		if (a['price'] > b['price']) return sortAscending ? 1 : -1;
+		return 0;
 	};
 
 	return (
@@ -47,7 +53,10 @@ const Pricing = () => {
 				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa magni
 				odit magnam alias nobis pariatur veritatis perferendis laudantium.
 			</Typography>
-			<Grid container spacing={4} columns={{xs: 1, md: 12}} my={4}>
+			<Button variant="outlined" onClick={() => toggleAscending()}>
+				Toggle Ascending
+			</Button>
+			<Grid container spacing={4} columns={{xs: 1, sm: 6, md: 12}} my={4}>
 				{flights.sort(handleSort).map((flight, i) => {
 					return (
 						<Grid item xs={3} key={i}>
